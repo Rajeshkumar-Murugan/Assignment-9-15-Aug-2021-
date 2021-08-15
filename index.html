@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Day 9/javascript.js"> </script>
+</head>
+<body>
+    <h4>
+        Assignment 9 (15 Aug 2021)
+    </h4>
+  <h5>
+      JS Codes
+  </h5>
+  <p>
+    //XHTML
+const getCountries = () =>{
+    const xhr=new XMLHttpRequest()
+  //data - endpoint (URL which contains the json data)
+  xhr.open('GET', 'https://restcountries.eu/rest/v2/all');
+  xhr.responeType = 'json';
+  xhr.onload = () => {
+    const data = xhr.response;
+   // console.log(data);
+   // console.log(JSON.parse(data))
+
+    let bigCountry = (JSON.parse(data))
+    .filter((Country) => Country.population > 10_00_00_000)
+    .map((Country) => Country.name + ':' +Country.population);
+    
+     console.log(bigCountry);
+
+    
+  }
+  xhr.send()
+}
+
+getCountries()
+</p>
+
+<h5>
+    Output:
+</h5>
+
+<p>
+    ["Bangladesh:161006790", "Brazil:206135893", "China:1377422166", "India:1295210000", "Indonesia:258705000", "Japan:126960000", "Mexico:122273473", "Nigeria:186988000", "Pakistan:194125062", "Philippines:103279800", "Russian Federation:146599183", "United States of America:323947000"]
+</p>
+</body>
+</html>
